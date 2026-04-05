@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.3.3">
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/util/RestAuthCall.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/util/RestPageImpl.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/util/RequestResponseTools.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/util/MultipartFileImpl.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/configuration/WebConfig.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/configuration/InterceptorSite.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/configuration/WebClientAuthConfig.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/WisherApprovedDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/VacancyStatisticWithDates.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/SubscribeTopicDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/CredentialDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/InnerMessageDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/SubscribeCategory.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/PhotoDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/UserTopicDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/PersonDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/UserDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/FilterDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/UserInfoDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/ProfileWithApprovedInterviewsDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/Role.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/DirectionKey.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/TopicIdNameDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/FeedbackNotificationDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/FeedbackDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/WisherNotifyDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/InterviewNotifyDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/FilterRequestParams.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/WisherDto.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/CategoryIdNameDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/InterviewStatistic.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/TopicLiteDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/WisherDetailDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/InterviewDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/CategoryWithTopicDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/WisherDismissedDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/CategoryDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/UsersApprovedInterviewsDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/TopicDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/CancelInterviewNotificationDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/dto/ProfileDTO.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/FeedbackController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/VacancyStatisticController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/TopicsController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/LoginController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/InterviewController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/MessagesController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/TopicController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/NotificationController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/rest/FilterRestController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/rest/InterviewsRestController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/rest/TopicsRestController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/rest/MessagesRestController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/rest/PhotoRestController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/CategoriesController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/WisherController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/ProfilesController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/IndexController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/InterviewsController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/CategoryController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/controller/PersonController.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/FilterService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/InterviewsService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/TopicsService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/NotificationService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/FeedbackService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/ImageCompress.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/ExamService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/ProfilesService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/WisherServiceWebClient.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/EurekaUriProvider.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/PhotoServices.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/PersonService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/UriStoreService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/WisherService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/InterviewService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/WebClientAuthCall.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/FeedbackServiceWebClient.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/AuthService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/VacancyStatisticService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/CategoriesService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/MessageService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/service/ImageCompressorService.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/enums/InterviewMode.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/enums/StatusInterview.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/SiteSrv.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/component/FilterRequestParamsManager.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/Category.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/VacancyURL.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/Breadcrumb.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/VacancyStatistic.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/Exam.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/Interview.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/java/ru/job4j/site/domain/FilterProfile.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/RequestResponseToolsTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/IndexControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/CategoryControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/TopicControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/FeedbackControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/rest/FilterRestControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/rest/MessagesRestControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/PersonControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/InterviewsControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/TopicsControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/LoginControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/WisherControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/ProfilesControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/CategoriesControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/MessagesControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/controller/InterviewControllerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/service/EurekaUriProviderTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/service/InterviewServiceTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/service/ImageCompressorServiceTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/service/FeedbackServiceWebClientTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/service/WisherServiceWebClientTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/service/TopicsServiceTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/enums/StatusInterviewTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/test/java/ru/job4j/site/component/FilterRequestParamsManagerTest.java">
+</file>
+<file name="/home/viktor/IdeaProjects/job4j_check_dev/services/site/src/main/resources/application.properties">
+</file>
+</checkstyle>
