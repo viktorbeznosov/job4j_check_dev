@@ -2,6 +2,7 @@ package ru.checkdev.auth.web.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import java.util.List;
  * @version 22.09.2023T23:49
  */
 
+@Slf4j
 @Tag(name = "ProfileController", description = "Profile REST API")
 @RestController
 @RequestMapping("/profiles")
@@ -36,6 +38,7 @@ public class ProfileController {
     @GetMapping("/{id}")
     public ResponseEntity<ProfileDTO> getProfileById(@PathVariable int id) {
         var profileDTO = profileService.findProfileByID(id);
+        log.info("PROFILE DTO {}", profileDTO);
         return new ResponseEntity<>(
                 profileDTO.orElse(new ProfileDTO()),
                 profileDTO.isEmpty() ? HttpStatus.NO_CONTENT : HttpStatus.OK);

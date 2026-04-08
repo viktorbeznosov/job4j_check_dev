@@ -51,7 +51,7 @@ class ProfilesControllerTest {
     void whenGetProfileByIdThenReturnPageProfileView() throws Exception {
         var token = "123";
         var id = 1;
-        var profile = new ProfileDTO(id, "username", "experience", 1,
+        var profile = new ProfileDTO(id, "username", "user@mail.ru", "experience", 1,
                 Calendar.getInstance(), Calendar.getInstance());
         var userInfo = new UserInfoDTO();
         userInfo.setId(1);
@@ -73,8 +73,8 @@ class ProfilesControllerTest {
 
     @Test
     void whenGetAllProfilesThenReturnPageProfilesWithCountOfApprovedInterviews() throws Exception {
-        var profile1 = new ProfileDTO(1, "username1", "experience1", 1, Calendar.getInstance(), Calendar.getInstance());
-        var profile2 = new ProfileDTO(2, "username2", "experience2", 2, Calendar.getInstance(), Calendar.getInstance());
+        var profile1 = new ProfileDTO(1, "username1", "user1@mail.ru",  "experience1", 1, Calendar.getInstance(), Calendar.getInstance());
+        var profile2 = new ProfileDTO(2, "username2", "user2@mail.ru", "experience2", 2, Calendar.getInstance(), Calendar.getInstance());
         var p1 = new ProfileWithApprovedInterviewsDTO(profile1, 5);
         var p2 = new ProfileWithApprovedInterviewsDTO(profile2, 10);
         var listProfile = List.of(p1, p2);

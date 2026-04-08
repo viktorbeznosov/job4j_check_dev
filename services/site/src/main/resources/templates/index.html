@@ -184,6 +184,8 @@
                                         <span th:text="${#strings.substring(interview.createDate, 0, 10)}"></span>
                                         <i class="far fa-user pl-3"></i>
                                         <span th:text="${authService.findById(interview.submitterId).username}"></span>
+                                        <i class="far fa-address-book pl-3"></i>
+                                        <span th:text="${authService.findById(interview.submitterId).email}"></span>
                                         <i class="fa fa-comments pl-3" aria-hidden="true"></i>
                                         <span>Откликов:</span>
                                         <span th:text="${interview.countWishers}"></span>
