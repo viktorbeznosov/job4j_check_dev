@@ -24,3 +24,5 @@ out
 files
 
 testdb.*
+
+*.pid
