@@ -78,9 +78,9 @@ class IndexControllerTest {
     void whenGetIndexPageExpectModelAttributeThenOk() throws Exception {
         var token = "1410";
         var topicDTO1 = new TopicDTO();
-        var profile1 = new ProfileDTO(1, "username1", "experience", 1,
+        var profile1 = new ProfileDTO(1, "username1", "user1@mail.ru",  "experience", 1,
                 Calendar.getInstance(), Calendar.getInstance());
-        var profile2 = new ProfileDTO(2, "username2", "experience", 2,
+        var profile2 = new ProfileDTO(2, "username2", "user2@mail.ru",  "experience", 2,
                 Calendar.getInstance(), Calendar.getInstance());
         topicDTO1.setId(1);
         topicDTO1.setName("topic1");

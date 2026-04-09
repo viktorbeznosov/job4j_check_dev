@@ -440,10 +440,16 @@
                                 <span th:insert="fragments/statusInterview::status"></span>
                                 <i class="far fa-clock"></i>
                                 <span class="me-2"
-                                      th:text="${#strings.substring(interview.createDate, 0, 10)}"></span>
+                                      th:text="${#strings.substring(interview.createDate, 0, 10)}">
+                                </span>
                                 <i class="far fa-user"></i>
                                 <span class="me-2"
-                                      th:text="${authService.findById(interview.submitterId).username}"></span>
+                                      th:text="${authService.findById(interview.submitterId).username}">
+                                </span>
+                                <i class="far fa-address-book pl-3"></i>
+                                <span class="me-2"
+                                      th:text="${authService.findById(interview.submitterId).email}">
+                                </span>
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <span>Откликов:</span>
                                 <span th:text="${interview.countWishers}"></span>

@@ -54,7 +54,7 @@ public class InterviewsControllerTest {
     public void whenShowAllInterviews() throws Exception {
         var token = "1410";
         var id = 1;
-        var profile = new ProfileDTO(id, "username", "experience", 1,
+        var profile = new ProfileDTO(id, "username", "user@mail.ru", "experience", 1,
                 Calendar.getInstance(), Calendar.getInstance());
         var userInfo = new UserInfoDTO();
         userInfo.setId(1);
