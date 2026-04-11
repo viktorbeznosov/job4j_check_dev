@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>404 - Страница не найдена</title>
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h1>Ошибка 404</h1>
+        <p th:text="${error}">Страница не найдена</p>
+        <p>Путь: <span th:text="${path}"></span></p>
+        <a href="/" class="btn btn-primary">На главную</a>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
