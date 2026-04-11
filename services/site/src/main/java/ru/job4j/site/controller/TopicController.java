@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.job4j.site.dto.TopicDTO;
 import ru.job4j.site.dto.TopicLiteDTO;
 import ru.job4j.site.service.AuthService;
+import ru.job4j.site.service.InterviewsService;
 import ru.job4j.site.service.NotificationService;
 import ru.job4j.site.service.TopicsService;
 import ru.job4j.site.util.RequestResponseTools;
@@ -27,17 +28,21 @@ public class TopicController {
     private final TopicsService topicsService;
     private final AuthService authService;
     private final NotificationService notifications;
+    private final InterviewsService interviewsService;
 
     @GetMapping("/{topicId}")
     public String details(@PathVariable int topicId,
                           Model model,
                           HttpServletRequest req) throws JsonProcessingException {
         var topic = topicsService.getById(topicId);
+        var interviews = interviewsService.getByTopicId(topicId, 0, 5);
         topic.setName(StringEscapeUtils.unescapeHtml4(topic.getName()));
         topic.setText(StringEscapeUtils.unescapeHtml4(topic.getText()));
         String categoryName = topic.getCategory().getName();
         int categoryId = topic.getCategory().getId();
         model.addAttribute("topic", topic);
+        model.addAttribute("interviews", interviews);
+        model.addAttribute("authService", authService);
         try {
             var token = getToken(req);
             if (token != null) {
@@ -58,6 +63,7 @@ public class TopicController {
                     categoryName, String.format("/topics/%d", categoryId));
             log.error("Remote application not responding. Error: {}. {}, ", e.getCause(), e.getMessage());
         }
+
         return "topic/details";
     }
 

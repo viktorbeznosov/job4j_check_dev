@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ import ru.checkdev.mock.service.InterviewService;
 import java.sql.SQLException;
 import java.util.List;
 
+@Slf4j
 @Tag(name = "InterviewsController", description = "Interviews REST API")
 @RestController
 @RequestMapping("/interviews")
@@ -34,6 +36,17 @@ public class InterviewsController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(interviewService.findPaging(page, size));
+    }
+
+    @GetMapping("/findByTopicId/{id}")
+    public ResponseEntity<Page<InterviewDTO>> findByTopicId(
+        @PathVariable int id,
+        @RequestParam(required = false, defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "20") int size
+    ) {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(interviewService.findByTopicId(id, page, size));
     }
 
     @GetMapping("/last")

@@ -74,6 +74,37 @@
         <div class="card-body">
             <pre th:utext="${topic.text}"></pre>
         </div>
+        <h5 class="card-header">Новые собеседования</h5>
+        <div class="card-body">
+            <table class="table">
+                <tbody class="table-hover">
+                <tr th:each="interview: ${interviews}" style="cursor: pointer;">
+                    <td>
+                        <a
+                            class="fw-bold text-dark text-decoration-none"
+                            th:href="@{|/interview/${interview.id}|}"
+                        >
+                            <h5 th:text="${interview.title}"></h5>
+                        </a>
+
+                        <div class="pb-2">
+                                <span class="mb-2 text-muted">
+                                    <i class="far fa-clock pl-3"></i>
+                                    <span th:text="${#strings.substring(interview.createDate, 0, 10)}"></span>
+                                    <i class="far fa-user pl-3"></i>
+                                    <span th:text="${authService.findById(interview.submitterId).username}"></span>
+                                    <i class="far fa-address-book pl-3"></i>
+                                    <span th:text="${authService.findById(interview.submitterId).email}"></span>
+                                    <i class="fa fa-comments pl-3" aria-hidden="true"></i>
+                                    <span>Удобное время:</span>
+                                    <span th:text="${interview.approximateDate}"></span>
+                                </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <br>

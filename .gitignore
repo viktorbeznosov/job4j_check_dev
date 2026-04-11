@@ -25,6 +25,7 @@ out
 files
 
 *.log
+**/logs/
 
 testdb.*
 
