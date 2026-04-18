@@ -74,6 +74,12 @@ public class InterviewService {
                 .toList();
     }
 
+    public Page<InterviewDTO> findByTopicId(int id, int page, int size) {
+        return interviewRepository.findByTopicId(id,
+            PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createDate"))
+        ).map(InterviewMapper::getInterviewDTO);
+    }
+
     public Page<InterviewDTO> findPaging(int page, int size) {
         return interviewRepository.findAll(
                         PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createDate")))

@@ -81,4 +81,6 @@ public interface InterviewRepository extends JpaRepository<Interview, Integer> {
     List<Interview> findAllByStatus(StatusInterview status);
 
     Page<Interview> findAll(Specification<Interview> specification, Pageable pageable);
+
+    Page<Interview> findByTopicId(int id, Pageable pageable);
 }
