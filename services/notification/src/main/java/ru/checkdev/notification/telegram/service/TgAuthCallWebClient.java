@@ -9,12 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-import reactor.util.retry.Retry;
 import ru.checkdev.notification.domain.Profile;
-
-import java.io.IOException;
-import java.time.Duration;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Класс реализует методы get и post для отправки сообщений через WebClient
@@ -68,13 +63,6 @@ public class TgAuthCallWebClient implements TgCall {
                 .bodyValue(profile)
                 .retrieve()
                 .bodyToMono(Object.class)
-                .retryWhen(Retry.backoff(3, Duration.ofSeconds(1))
-                        .maxBackoff(Duration.ofSeconds(5))
-                        .jitter(0.2)
-                        .filter(throwable -> throwable instanceof IOException || throwable instanceof TimeoutException)
-                        .doBeforeRetry(retrySignal -> log.warn("Retry attempt {} for URL: {}",
-                                retrySignal.totalRetries() + 1, url))
-                )
                 .doOnError(err -> log.error("API not found: {}", err.getMessage()));
     }
 
