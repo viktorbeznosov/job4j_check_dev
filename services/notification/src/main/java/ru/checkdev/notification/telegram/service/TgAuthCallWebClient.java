@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import ru.checkdev.notification.domain.Profile;
-import ru.checkdev.notification.service.CircuitBreaker;
 
 /**
  * Класс реализует методы get и post для отправки сообщений через WebClient
@@ -22,8 +21,6 @@ import ru.checkdev.notification.service.CircuitBreaker;
 @AllArgsConstructor
 @Slf4j
 public class TgAuthCallWebClient implements TgCall {
-    private final CircuitBreaker circuitBreaker = new CircuitBreaker(3);
-
     @Value("${server.auth}")
     private String urlServiceAuth;
 
@@ -52,27 +49,13 @@ public class TgAuthCallWebClient implements TgCall {
      */
     @Override
     public Mono<Object> doPost(String url, Profile profile) {
-
-        return Mono.defer(() -> {
-            try {
-                Object result = circuitBreaker.exec(
-                    () -> {
-                        return WebClient.create(urlServiceAuth)
-                            .post()
-                            .uri(url)
-                            .bodyValue(profile)
-                            .retrieve()
-                            .bodyToMono(Object.class)
-                            .block();
-                    },
-                    new Object()
-                );
-                return Mono.just(result);
-            } catch (CircuitBreaker.CircuitBreakerOpenException e) {
-                log.error("Circuit Breaker is OPEN, request rejected: {}", url);
-                return Mono.error(e);
-            }
-        });
+        return WebClient.create(urlServiceAuth)
+                .post()
+                .uri(url)
+                .bodyValue(profile)
+                .retrieve()
+                .bodyToMono(Object.class)
+                .doOnError(err -> log.error("API not found: {}", err.getMessage()));
     }
 
     @Override
