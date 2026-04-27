@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -25,6 +26,8 @@ import ru.checkdev.notification.domain.Profile;
 public class TgAuthCallWebClient implements TgCall {
     @Value("${server.auth}")
     private String urlServiceAuth;
+
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     /**
      * Метод get
@@ -55,7 +58,7 @@ public class TgAuthCallWebClient implements TgCall {
     @Retry(name = "tgAuthRetry")
     @CircuitBreaker(name = "tgAuthCircuitBreaker", fallbackMethod = "fallbackPost")
     public Mono<Object> doPost(String url, Profile profile) {
-
+        kafkaTemplate.send("job4j_checkdev", profile);
 
         return WebClient.create(urlServiceAuth)
                 .post()
