@@ -19,6 +19,7 @@ import ru.checkdev.notification.telegram.service.TgCall;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * Класс создание экземпляр класса TgBotFake для профиля develop без использованием Telegram API
@@ -62,7 +63,7 @@ public class TgConfigFake {
                         new RegPutEmailAction(sessionTg),
                         new RegCheckEmailAction(sessionTg),
                         new RegSaveUserAction(sessionTg, tgCall, userTelegramService,
-                                String.format("%s/login", uriProvider.getUri(SERVICE_ID)))
+                                () -> String.format("%s/login", uriProvider.getUri(SERVICE_ID)))
                 ),
                 "/check", List.of(new CheckAction(sessionTg, tgCall, userTelegramService)),
                 "/notify", List.of(new NotifyAction(sessionTg, userTelegramService)),

@@ -1,6 +1,5 @@
 package ru.job4j.site.service;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
@@ -22,10 +21,22 @@ import java.util.List;
  * @since 19.09.2023
  */
 @Service
-@AllArgsConstructor
 @Slf4j
 public class WebClientAuthCall {
-    private final WebClient webClient;
+    private final EurekaUriProvider uriProvider;
+    private static final String SERVICE_ID = "auth";
+    private WebClient webClient;
+
+    public WebClientAuthCall(EurekaUriProvider uriProvider) {
+        this.uriProvider = uriProvider;
+    }
+
+    private WebClient getWebClient() {
+        if (webClient == null) {
+            webClient = WebClient.create(uriProvider.getUri(SERVICE_ID));
+        }
+        return webClient;
+    }
 
     /**
      * Метод doGet отправляет get запрос в сервис AUTH
@@ -35,7 +46,7 @@ public class WebClientAuthCall {
      * @return Mono<String>
      */
     public Mono<String> doGet(String url, String token) {
-        return webClient
+        return getWebClient()
                 .get()
                 .uri(url)
                 .header("Authorization", "Bearer " + token)
@@ -55,7 +66,7 @@ public class WebClientAuthCall {
      * @return Mono<ResponseEntity < String>>
      */
     public Mono<ResponseEntity<String>> doPostMultipart(String url, String token, MultipartBodyBuilder builder) {
-        return webClient
+        return getWebClient()
                 .post()
                 .uri(url)
                 .header("Authorization", "Bearer " + token)
@@ -73,7 +84,7 @@ public class WebClientAuthCall {
      * @return Mono<ResponseEntity>
      */
     public Mono<ResponseEntity<ProfileDTO>> doGetReqParam(String url) {
-        return webClient
+        return getWebClient()
                 .get()
                 .uri(urlBuilder -> urlBuilder
                         .path(url)
@@ -91,7 +102,7 @@ public class WebClientAuthCall {
      * @return Mono<ResponseEntity < List < ProfileDTO>>>
      */
     public Mono<ResponseEntity<List<ProfileDTO>>> doGetReqParamAll(String url) {
-        return webClient
+        return getWebClient()
                 .get()
                 .uri(urlBuilder -> urlBuilder
                         .path(url)
@@ -110,7 +121,7 @@ public class WebClientAuthCall {
      * @return Mono<ResponseEntity < ByteArrayResource>>
      */
     public Mono<ResponseEntity<ByteArrayResource>> doGetPhoto(String url, int id) {
-        return webClient
+        return getWebClient()
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path(url)

@@ -1,0 +1,233 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - checkdev-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - checkdev-network
+
+  postgres-auth:
+    image: postgres:15
+    container_name: postgres-auth
+    environment:
+      POSTGRES_DB: cd_auth
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - checkdev-network
+
+  postgres-desc:
+    image: postgres:15
+    container_name: postgres-desc
+    environment:
+      POSTGRES_DB: cd_desc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - checkdev-network
+
+  postgres-generator:
+    image: postgres:15
+    container_name: postgres-generator
+    environment:
+      POSTGRES_DB: cd_generator
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - checkdev-network
+
+  postgres-mock:
+    image: postgres:15
+    container_name: postgres-mock
+    environment:
+      POSTGRES_DB: mock
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - checkdev-network
+
+  postgres-notification:
+    image: postgres:15
+    container_name: postgres-notification
+    environment:
+      POSTGRES_DB: cd_notification
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - checkdev-network
+
+  eureka:
+    build:
+      context: ./services/eureka
+      dockerfile: Dockerfile
+    container_name: eureka
+    ports:
+      - "9009:9009"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9009/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    networks:
+      - checkdev-network
+
+  auth:
+    build:
+      context: ./services/auth
+      dockerfile: Dockerfile
+    container_name: auth
+    depends_on:
+      eureka:
+        condition: service_started
+      postgres-auth:
+        condition: service_started
+      kafka:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-auth:5432/cd_auth
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SECURITY_OAUTH2_RESOURCE_USERINFOURI: http://auth:9900/user
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:9009/eureka
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - "9900:9900"
+    networks:
+      - checkdev-network
+
+  desc:
+    build:
+      context: ./services/desc
+      dockerfile: Dockerfile
+    container_name: desc
+    depends_on:
+      eureka:
+        condition: service_started
+      postgres-desc:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-desc:5432/cd_desc
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SECURITY_OAUTH2_RESOURCE_USERINFOURI: http://auth:9900/user
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:9009/eureka
+    ports:
+      - "9902:9902"
+    networks:
+      - checkdev-network
+
+  generator:
+    build:
+      context: ./services/generator
+      dockerfile: Dockerfile
+    container_name: generator
+    depends_on:
+      eureka:
+        condition: service_started
+      postgres-generator:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-generator:5432/cd_generator
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SECURITY_OAUTH2_RESOURCE_USERINFOURI: http://auth:9900/user
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:9009/eureka
+    ports:
+      - "9903:9903"
+    networks:
+      - checkdev-network
+
+  mock:
+    build:
+      context: ./services/mock
+      dockerfile: Dockerfile
+    container_name: mock
+    depends_on:
+      eureka:
+        condition: service_started
+      postgres-mock:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-mock:5432/mock
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SECURITY_OAUTH2_RESOURCE_USERINFOURI: http://auth:9900/user
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:9009/eureka
+    ports:
+      - "9912:9912"
+    networks:
+      - checkdev-network
+
+  notification:
+    build:
+      context: ./services/notification
+      dockerfile: Dockerfile
+    container_name: notification
+    depends_on:
+      eureka:
+        condition: service_started
+      postgres-notification:
+        condition: service_started
+      kafka:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-notification:5432/cd_notification
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SECURITY_OAUTH2_RESOURCE_USERINFOURI: http://auth:9900/user
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:9009/eureka
+      SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - "9920:9920"
+    networks:
+      - checkdev-network
+
+  site:
+    build:
+      context: ./services/site
+      dockerfile: Dockerfile
+    container_name: site
+    depends_on:
+      eureka:
+        condition: service_started
+      auth:
+        condition: service_started
+      mock:
+        condition: service_started
+      desc:
+        condition: service_started
+      generator:
+        condition: service_started
+      notification:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:9009/eureka
+      SERVICE_URLSITE: http://site:8000/
+    ports:
+      - "8000:8000"
+    networks:
+      - checkdev-network
+
+networks:
+  checkdev-network:
+    driver: bridge

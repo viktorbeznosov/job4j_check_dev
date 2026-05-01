@@ -16,6 +16,7 @@ import ru.checkdev.notification.telegram.service.TgCall;
 
 import java.util.Calendar;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 /**
  * Класс реализует пункт меню регистрации нового пользователя в телеграм бот.
@@ -37,7 +38,7 @@ public class RegSaveUserAction implements Action {
     private final SessionTg sessionTg;
     private final TgCall tgCall;
     private final UserTelegramService userTelegramService;
-    private final String urlSiteAuth;
+    private final Supplier<String> urlSiteAuthSupplier;
 
     @Override
     public Optional<BotApiMethod> handle(Update update) {
@@ -74,7 +75,7 @@ public class RegSaveUserAction implements Action {
                 .append("Имя: ").append(profile.getUsername()).append(ls)
                 .append("Email: ").append(profile.getEmail()).append(ls)
                 .append("Пароль : ").append(password).append(ls)
-                .append(urlSiteAuth).toString();
+                .append(urlSiteAuthSupplier.get()).toString();
         userTelegramService.save(new UserTelegram(0, profile.getId(), chatId, false));
         return Optional.of(new SendMessage(chatId.toString(), text));
     }

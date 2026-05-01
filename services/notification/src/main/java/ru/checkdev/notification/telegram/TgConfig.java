@@ -23,6 +23,7 @@ import ru.checkdev.notification.telegram.service.TgCall;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * Инициализация телеграм бот,
@@ -69,7 +70,7 @@ public class TgConfig {
                         new RegPutEmailAction(sessionTg),
                         new RegCheckEmailAction(sessionTg),
                         new RegSaveUserAction(sessionTg, tgCall, userTelegramService,
-                                uriProvider.getUri(SERVICE_ID))
+                                () -> String.format("%s/login", uriProvider.getUri(SERVICE_ID)))
                 ),
                 "/check", List.of(new CheckAction(sessionTg, tgCall, userTelegramService)),
                 "/forget", List.of(new ForgetAction(sessionTg, tgCall, userTelegramService)),

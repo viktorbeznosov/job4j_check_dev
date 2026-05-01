@@ -25,6 +25,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -62,9 +63,10 @@ class RegSaveUserActionTest {
         userTelegramService = new UserTelegramService(
                 new UserTelegramRepositoryFake(
                         new SubscribeTopicRepositoryFake()));
+        Supplier<String> urlSupplier = () -> String.format("%s/login", uriProvider.getUri("site"));
         regSaveUserAction =
                 new RegSaveUserAction(sessionTg,
-                        new FakeTgCallConsole(uriProvider), userTelegramService, URL_SITE_AUTH);
+                        new FakeTgCallConsole(uriProvider), userTelegramService, urlSupplier);
         message = new Message();
         update = new Update();
     }
@@ -98,12 +100,12 @@ class RegSaveUserActionTest {
         SendMessage sendMessage = (SendMessage) botApiMethod;
         String actual = sendMessage.getText();
         String ls = System.lineSeparator();
-        String passwordInMessage = getPassInMessage(actual, URL_SITE_AUTH);
+        String passwordInMessage = getPassInMessage(actual, "null/login");
         String expect = new StringBuilder().append("Вы зарегистрированы: ").append(ls)
                 .append("Имя: ").append(name).append(ls)
                 .append("Email: ").append(email).append(ls)
                 .append("Пароль : ").append(passwordInMessage).append(ls)
-                .append(URL_SITE_AUTH).toString();
+                .append("null/login").toString();
 
         assertThat(actual).isEqualTo(expect);
     }
